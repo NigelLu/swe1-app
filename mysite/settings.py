@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # # load the .env file
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"), verbose=True)
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"), verbose=False)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -79,14 +79,20 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "PORT": "5432",
+#         "USER": os.getenv("USERNAME"),
+#         "HOST": "127.0.0.1",
+#         "NAME": os.getenv("DB_NAME"),
+#         "PASSWORD": os.getenv("PASSWORD"),
+#         "ENGINE": "django.db.backends.postgresql",
+#     }
+# }
 DATABASES = {
-    "default": {
-        "PORT": "5432",
-        "USER": os.getenv("USERNAME"),
-        "HOST": "127.0.0.1",
-        "NAME": os.getenv("DB_NAME"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "ENGINE": "django.db.backends.postgresql",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
