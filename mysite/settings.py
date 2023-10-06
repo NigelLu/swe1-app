@@ -17,7 +17,6 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # # load the .env file
 load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"), verbose=False)
 
@@ -30,7 +29,7 @@ SECRET_KEY = "django-insecure-&5e)gjo@%@tg5(f7qf0)dg6g$c*3=e#_fj)p1w6+#5)mok4oh^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["swe1-env.eba-2syjhyee.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["swe1-env.eba-2syjhyee.us-west-2.elasticbeanstalk.com" if os.getenv("PROD")!="false" else "127.0.0.1"]
 
 
 # Application definition
@@ -79,20 +78,14 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "PORT": "5432",
-#         "USER": os.getenv("USERNAME"),
-#         "HOST": "127.0.0.1",
-#         "NAME": os.getenv("DB_NAME"),
-#         "PASSWORD": os.getenv("PASSWORD"),
-#         "ENGINE": "django.db.backends.postgresql",
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "PORT": os.getenv("RDS_PORT"),
+        "USER": os.getenv("RDS_USERNAME"),
+        "HOST": os.getenv("RDS_HOSTNAME"),
+        "NAME": os.getenv("RDS_DB_NAME"),
+        "PASSWORD": os.getenv("RDS_PASSWORD"),
+        "ENGINE": "django.db.backends.postgresql",
     }
 }
 
