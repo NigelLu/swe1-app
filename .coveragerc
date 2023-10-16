@@ -1,0 +1,8 @@
+[run]
+omit =
+    .venv/*         # Virtual Environment
+    # Irrelevant files in coverage:
+    setup.py
+    */migrations/*
+    mysite/wsgi.py
+    manage.py
