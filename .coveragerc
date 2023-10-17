@@ -5,4 +5,5 @@ omit =
     setup.py
     */migrations/*
     mysite/wsgi.py
+    mysite/asgi.py
     manage.py
