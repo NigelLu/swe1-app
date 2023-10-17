@@ -1,8 +1,6 @@
-dist: xenial
-
 os: linux
 
-arch: x86_64
+dist: focal
 
 language: python
 
@@ -11,21 +9,26 @@ python:
 
 env:
     global:
-        - PGPORT=5433
+        - PGPORT=5432
         - PGUSER=travis
 
 services:
     - postgresql
 
 addons:
-    postgresql: "12.16"
+    postgresql: "13"
+
 
 before_script:
     # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub
     # * to ensure migration files are up-to-date
+    - psql -V
+    - sudo systemctl start postgresql
+    - pg_lsclusters
     - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U $PGUSER
     - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
     - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
+    - psql -c "ALTER USER $RDS_USERNAME CREATEDB;"
     - python manage.py migrate
 
 install:
@@ -34,7 +37,7 @@ install:
 script:
     - black --check .
     - flake8 .
-    - coverage run manage.py test
+    - coverage run --source=mysite,polls manage.py test
 
 after_success:
     - coveralls
