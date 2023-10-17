@@ -11,19 +11,19 @@ python:
 
 env:
     global:
-        - PGPORT=5432
-        - PGUSER=postgres
+        - PGPORT=5433
+        - PGUSER=travis
 
 services:
     - postgresql
 
 addons:
-    postgresql: "12"
+    postgresql: "12.16"
 
 before_script:
     # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub
     # * to ensure migration files are up-to-date
-    - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U postgres
+    - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U $PGUSER
     - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
     - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
     - python manage.py migrate
