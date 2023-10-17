@@ -1,10 +1,18 @@
 language: python
 
 python:
-  - "3.8"
+  - 3.8
+
+services:
+  - postgresql
 
 before_script:
+  - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U postgresql
+  - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
+  - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
   - cd mysite
+  # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub 
+  # * to ensure migration files are up-to-date
   - python manage.py migrate
 
 install:
@@ -13,7 +21,7 @@ install:
 script:
   - black --check .
   - flake8 .
-  - coverage run manage.py test polls
+  - coverage run manage.py test
 
 after_success: 
   - coveralls
@@ -23,9 +31,9 @@ deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_EB_ACCESS_KEY
   secret_access_key: $AWS_EB_SECRET_ACCESS_KEY
-  region: "us-west-2"
-  app: "mysite"
-  env: "mysite-dev2"
+  region: us-west-2
+  app: mysite
+  env: mysite-dev2
   bucket_name: $AWS_EB_BUCKET_NAME
   on:
     branch: main
