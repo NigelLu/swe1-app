@@ -1,0 +1,12 @@
+language: python
+
+python:
+  - "3.11"
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - coverage run manage.py test 
+  - black -t py311 --check . 
+  - flake8 .
