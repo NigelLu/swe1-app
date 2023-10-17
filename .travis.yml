@@ -13,12 +13,11 @@ services:
     - postgresql
 
 before_script:
+    # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub
+    # * to ensure migration files are up-to-date
     - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U postgres
     - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
     - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
-    - cd mysite
-    # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub
-    # * to ensure migration files are up-to-date
     - python manage.py migrate
 
 install:
