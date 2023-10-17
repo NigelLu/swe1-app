@@ -2,41 +2,42 @@ os: linux
 dist: focal
 language: python
 python:
-- 3.8
+    - 3.8
 env:
-  global:
-  - PGPORT=5432
-  - PGUSER=travis
-  - secure: Wk+ejKgS5RsXjDFzzuDumnD9adq+RKwD91nYEZlaxdHSs0mBDNIYMXeAI0AzbkAwaiWaPNEFJnfzb1gSNIP2FFv5z07qCbwHiwN6yzg/cddQE6hcsb2E/l/OhCYnUNCaa4ss1Ht0sqBSRSOUt9TQWqdt2piQVNapq31bGucwqKJOCRQUFBo6zb+Nn1C/l3kFKR4fEvMAElT7ODqvhJsYUS51fkzga+JfDwSOhysR1pnWR8DV+SrlK5hDVTbeJfypbROn+w5AUiWnc3M3GskqDwEV5TW+lQjrALUonOviSFFOxsi3C1gC8h58eKscGVG7shkAt1cszqndC2SlkK0rzllUgDtOXC+xGTWfbOqtLLL01Bfjzq5hlLQZTGzzQqsUMwT/aOmsBmG1sOPbKGf/bFLwNqEo7gHz8PR7tSjDa7xAFR5vcrA04oqnPI9/aVQr1M3eX9BafjsGOxzjnGn+LPaiVJeYMkKIebLiU6/FZANCrsHxapNXUJKZPxzgUp+bT3eT2tXF01hU1lfUqCPP5Y2n80fj1RogRMR3f8PnTMqNoEUkMPBMqRioJEiXvnqH2Z207L70d85X0LZzu9rGrR0ONpcQhaKnWyyBYU/N4T5xPyR4A3Z7cCtb0IlgVk5i7dahkcFwtH6PfGNeRa5JKtBqoCCbUTqcY3DXRlem04E=
-  - secure: YcojBJIEpziE8cneMm8nuatIHuGkM9ZBHOFy2WGBFOozp36DE5kB8DZyb2yOju/F+ebqvdC1r08JP+/xSihnEOY+pcZRDH4tdbpQchlv7i58yHfR1yH0/FKtR3MZk3ILNIlGHV0uwAXq8yQXNwHMZYB4EyXODiRrU6NZJwcooQQkiZ2zSbRtvkJQYcRklfwIKx8LOJIt9iKDzCAoZtx7himmbz6gqRuNmjNx7XdW9E/QW0BPugFjL5baK6Sv3mCP8BFT2G+mLf7pCTVE8gtMrEKJJnqJIox2gcIeQjK8GuOlhFAGNCvY+fPc6Z0hPRgxrwx7lgI8Vot7i66iiSsLqyEVvwCoU4tqNXYy6+pJaJ7HbWVsny8/eEztsmvaJgbxq81ZDB8soa7ELWicQ5wP6xwV0vxNXiSONRBe+hczPFEhf5yylAUaq2C4INvUZtaBbu2WR+/ZyLe1XCXYeDG2woEwc8p/I/0IZBgo3uSEqgQxCLXvto23lcuDxcfoe5bkTIA7SaYg9/Dmi5YWwtPrOyvaVXE0kdcftddnmhG20Ug4SuQVYUpe5TNBlnY3Sj+iP7wkv5nY++33UEzv9EOldF3Kmx7/QkrNGXEnKTd+R0zz+H2dOfEOW9w9uejglTNltSDlbDhEo+gaA7cOxdGWW1cEfPeGPPvptwT3MXdhuDQ=
+    global:
+        - PGPORT=5432
+        - PGUSER=travis
+        - secure: Wk+ejKgS5RsXjDFzzuDumnD9adq+RKwD91nYEZlaxdHSs0mBDNIYMXeAI0AzbkAwaiWaPNEFJnfzb1gSNIP2FFv5z07qCbwHiwN6yzg/cddQE6hcsb2E/l/OhCYnUNCaa4ss1Ht0sqBSRSOUt9TQWqdt2piQVNapq31bGucwqKJOCRQUFBo6zb+Nn1C/l3kFKR4fEvMAElT7ODqvhJsYUS51fkzga+JfDwSOhysR1pnWR8DV+SrlK5hDVTbeJfypbROn+w5AUiWnc3M3GskqDwEV5TW+lQjrALUonOviSFFOxsi3C1gC8h58eKscGVG7shkAt1cszqndC2SlkK0rzllUgDtOXC+xGTWfbOqtLLL01Bfjzq5hlLQZTGzzQqsUMwT/aOmsBmG1sOPbKGf/bFLwNqEo7gHz8PR7tSjDa7xAFR5vcrA04oqnPI9/aVQr1M3eX9BafjsGOxzjnGn+LPaiVJeYMkKIebLiU6/FZANCrsHxapNXUJKZPxzgUp+bT3eT2tXF01hU1lfUqCPP5Y2n80fj1RogRMR3f8PnTMqNoEUkMPBMqRioJEiXvnqH2Z207L70d85X0LZzu9rGrR0ONpcQhaKnWyyBYU/N4T5xPyR4A3Z7cCtb0IlgVk5i7dahkcFwtH6PfGNeRa5JKtBqoCCbUTqcY3DXRlem04E=
+        - secure: YcojBJIEpziE8cneMm8nuatIHuGkM9ZBHOFy2WGBFOozp36DE5kB8DZyb2yOju/F+ebqvdC1r08JP+/xSihnEOY+pcZRDH4tdbpQchlv7i58yHfR1yH0/FKtR3MZk3ILNIlGHV0uwAXq8yQXNwHMZYB4EyXODiRrU6NZJwcooQQkiZ2zSbRtvkJQYcRklfwIKx8LOJIt9iKDzCAoZtx7himmbz6gqRuNmjNx7XdW9E/QW0BPugFjL5baK6Sv3mCP8BFT2G+mLf7pCTVE8gtMrEKJJnqJIox2gcIeQjK8GuOlhFAGNCvY+fPc6Z0hPRgxrwx7lgI8Vot7i66iiSsLqyEVvwCoU4tqNXYy6+pJaJ7HbWVsny8/eEztsmvaJgbxq81ZDB8soa7ELWicQ5wP6xwV0vxNXiSONRBe+hczPFEhf5yylAUaq2C4INvUZtaBbu2WR+/ZyLe1XCXYeDG2woEwc8p/I/0IZBgo3uSEqgQxCLXvto23lcuDxcfoe5bkTIA7SaYg9/Dmi5YWwtPrOyvaVXE0kdcftddnmhG20Ug4SuQVYUpe5TNBlnY3Sj+iP7wkv5nY++33UEzv9EOldF3Kmx7/QkrNGXEnKTd+R0zz+H2dOfEOW9w9uejglTNltSDlbDhEo+gaA7cOxdGWW1cEfPeGPPvptwT3MXdhuDQ=
 services:
-- postgresql
+    - postgresql
 addons:
-  postgresql: '13'
+    postgresql: "13"
 before_script:
-- psql -V
-- sudo systemctl start postgresql
-- pg_lsclusters
-- psql -c "CREATE DATABASE $RDS_DB_NAME;" -U $PGUSER
-- psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
-- psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
-- psql -c "ALTER USER $RDS_USERNAME CREATEDB;"
-- python manage.py migrate
+    - psql -V
+    - sudo systemctl start postgresql
+    - pg_lsclusters
+    - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U $PGUSER
+    - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
+    - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
+    - psql -c "ALTER USER $RDS_USERNAME CREATEDB;"
+    - python manage.py migrate
 install:
-- pip install -r requirements.txt
+    - pip install -r requirements.txt
 script:
-- black --check .
-- flake8 .
-- coverage run --source=mysite,polls manage.py test
+    - black --check .
+    - flake8 .
+    - coverage run --source=mysite,polls manage.py test
 after_success:
-- coveralls
+    - coveralls
 deploy:
-  provider: elasticbeanstalk
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_ACCESS_SECRET_KEY
-  region: us-west-2
-  app: swe1-app
-  env: swe1-env
-  bucket_name: $S3_BUCKET_NAME
-  on:
-    branch: master
+    provider: elasticbeanstalk
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_ACCESS_SECRET_KEY
+    region: us-west-2
+    app: swe1-app
+    env: swe1-env
+    bucket_name: $S3_BUCKET_NAME
+    on:
+        branch: master
+after_deploy: ./scripts/after_deploy.sh
