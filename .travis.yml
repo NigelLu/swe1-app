@@ -1,16 +1,43 @@
+os: linux
+
+dist: focal
+
 language: python
 
 python:
-  - "3.11"
+    - 3.8
 
-install:
-  - pip install -r requirements.txt
+env:
+    global:
+        - PGPORT=5432
+        - PGUSER=travis
+
+services:
+    - postgresql
+
+addons:
+    postgresql: "13"
+
 
 before_script:
-  - python manage.py migrate
-  - python manage.py collectstatic --noinput
+    # * please ALWAYS run "python manage.py makemigrations" before pushing to GitHub
+    # * to ensure migration files are up-to-date
+    - psql -V
+    - sudo systemctl start postgresql
+    - pg_lsclusters
+    - psql -c "CREATE DATABASE $RDS_DB_NAME;" -U $PGUSER
+    - psql -c "CREATE USER $RDS_USERNAME WITH ENCRYPTED PASSWORD '$RDS_PASSWORD';"
+    - psql -c "ALTER DATABASE $RDS_DB_NAME OWNER TO $RDS_USERNAME;"
+    - psql -c "ALTER USER $RDS_USERNAME CREATEDB;"
+    - python manage.py migrate
+
+install:
+    - pip install -r requirements.txt
 
 script:
-  - black --check .
-  - flake8 .
-  - coverage run --source=mysite,polls manage.py test 
+    - black --check .
+    - flake8 .
+    - coverage run --source=mysite,polls manage.py test
+
+after_success:
+    - coveralls

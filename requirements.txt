@@ -1,6 +1,7 @@
 asgiref==3.7.2
 attrs==23.1.0
 awsebcli==3.20.10
+backports.zoneinfo==0.2.1
 bcrypt==4.0.1
 black==23.9.1
 blessed==1.20.0
@@ -12,12 +13,14 @@ cfgv==3.4.0
 charset-normalizer==3.3.0
 click==8.1.7
 colorama==0.4.3
-coverage==7.3.2
+coverage==6.5.0
+coveralls==3.3.1
 cryptography==41.0.4
 distlib==0.3.7
 distro==1.8.0
 Django==4.2.6
 django-debug-toolbar==4.2.0
+docopt==0.6.2
 filelock==3.12.4
 flake8==6.1.0
 identify==2.5.30
@@ -45,6 +48,8 @@ six==1.16.0
 sqlparse==0.4.4
 termcolor==1.1.0
 texttable==1.6.7
+tomli==2.0.1
+typing_extensions==4.8.0
 urllib3==1.26.16
 virtualenv==20.24.5
 wcwidth==0.1.9
