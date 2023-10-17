@@ -28,30 +28,39 @@ SECRET_KEY = "django-insecure-&5e)gjo@%@tg5(f7qf0)dg6g$c*3=e#_fj)p1w6+#5)mok4oh^
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
-ALLOWED_HOSTS = ["swe1-env.eba-2syjhyee.us-west-2.elasticbeanstalk.com" if os.getenv("PROD")!="false" else "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "swe1-env.eba-2syjhyee.us-west-2.elasticbeanstalk.com"
+    if os.getenv("PROD") != "false"
+    else "127.0.0.1"
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "polls.apps.PollsConfig",
+    "debug_toolbar",
     "django.contrib.admin",
     "django.contrib.auth",
-    "django.contrib.contenttypes",
+    "polls.apps.PollsConfig",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.contenttypes",
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -79,7 +88,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    "default": {
         "PORT": os.getenv("RDS_PORT"),
         "USER": os.getenv("RDS_USERNAME"),
         "HOST": os.getenv("RDS_HOSTNAME"),

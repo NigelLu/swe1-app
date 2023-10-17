@@ -22,5 +22,6 @@ app_name = "mysite"
 urlpatterns = [
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls, name="admin"),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("", RedirectView.as_view(pattern_name="polls:index", permanent=True)),
 ]
