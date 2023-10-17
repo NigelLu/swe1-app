@@ -1,3 +1,1 @@
-python manage.py migrate --noinput
-python manage.py superuser
-python manage.py collectstatic
+echo "Done -> check it out at AWS Console"
