@@ -30,15 +30,3 @@ script:
 
 after_success:
     - coveralls
-
-deploy:
-    cleanup: false
-    provider: elasticbeanstalk
-    access_key_id: $AWS_EB_ACCESS_KEY
-    secret_access_key: $AWS_EB_SECRET_ACCESS_KEY
-    region: us-west-2
-    app: mysite
-    env: mysite-dev2
-    bucket: $AWS_EB_BUCKET_NAME
-    on:
-        branch: main
