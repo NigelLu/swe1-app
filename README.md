@@ -4,4 +4,4 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/NigelLu/swe1-app/badge.svg?branch=master)](https://coveralls.io/github/NigelLu/swe1-app?branch=master)
 
-Repo for Practical Software Engineering I course's Django tutorial.
+Repo for Practical Software Engineering I course's Django tutorial. 
